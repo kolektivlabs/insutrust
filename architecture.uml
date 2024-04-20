@@ -1,0 +1,30 @@
+@startuml
+!define Theme
+skinparam shadowing false
+skinparam linetype ortho
+skinparam componentStyle modern
+skinparam RoundCorner 12
+skinparam DatabaseBackgroundColor #darkgrey
+skinparam ArrowColor #LightGray
+skinparam ComponentBackgroundColor #WhiteSmoke
+skinparam InterfaceBackgroundColor #Orange
+skinparam ComponentBorderColor #darkgrey
+
+[Web UI]
+
+frame "Backend" {
+    frame "Web" {
+        [API Client] #lightblue
+        [Web UI] --> [API Client]
+        [Context]
+        frame "Store" {
+            [Model]
+            database "Database" {
+            }
+        }
+    }
+
+    frame "Canister" {
+    }
+}
+@enduml
