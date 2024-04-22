@@ -64,9 +64,7 @@ async fn api_login_handler(
 
 	// Create the success body.
 	let body = Json(json!({
-		"result": {
-			"success": true
-		}
+		"success": true
 	}));
 
 	Ok(body)
@@ -93,9 +91,7 @@ async fn api_logout_handler(
 
 	// Create the success body.
 	let body = Json(json!({
-		"result": {
-			"logged_out": should_logout
-		}
+		"success": should_logout
 	}));
 
 	Ok(body)
