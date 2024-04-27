@@ -15,6 +15,7 @@ pub fn routes(mm: ModelManager) -> Router {
 	Router::new()
 		.route("/api/login", post(api_login_handler))
 		.route("/api/logout", post(api_logout_handler))
+		.route("/api/register", post(api_register_handler))
 		.with_state(mm)
 }
 
@@ -102,3 +103,30 @@ struct LogoutPayload {
 	logout: bool,
 }
 // endregion: --- Logout
+
+// region:    --- Register
+async fn api_register_handler(
+	State(mm): State<ModelManager>,
+	cookies: Cookies,
+	Json(payload): Json<RegisterPayload>,
+) -> Result<Json<Value>> {
+	debug!("{:<12} - api_register_handler", "HANDLER");
+
+	let RegisterPayload {
+		username,
+		pwd: pwd_clear,
+	} = payload;
+	
+	let body = Json(json!({
+		"success": true
+	}));
+
+	Ok(body)
+}
+
+#[derive(Debug, Deserialize)]
+struct RegisterPayload {
+	username: String,
+	pwd: String,
+}
+// endregion: --- Register
