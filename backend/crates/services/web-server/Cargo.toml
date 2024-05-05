@@ -30,6 +30,7 @@ time = { workspace = true }
 uuid = {version = "1", features = ["v4","fast-rng",]}
 strum_macros = "0.26"
 derive_more = { workspace = true }
+rand = "0.8"
 
 [dev-dependencies]
 httpc-test = "0.1"
